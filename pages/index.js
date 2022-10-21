@@ -4,6 +4,7 @@ import Banner from '../components/Banner';
 import ExploreCards from '../components/ExploreCards';
 import LiveAnywhere from '../components/LiveAnywhere';
 import FooterCard from '../components/FooterCard';
+import Footer from '../components/Footer';
 
 export default function Home({ exploreData, liveData }) {
   return (
@@ -27,6 +28,8 @@ export default function Home({ exploreData, liveData }) {
           buttonText='Get Inspired!'
         />
       </main>
+
+      <Footer />
     </div>
   );
 }
