@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Banner from '../components/Banner';
 import ExploreCards from '../components/ExploreCards';
 import LiveAnywhere from '../components/LiveAnywhere';
+import FooterCard from '../components/FooterCard';
 
 export default function Home({ exploreData, liveData }) {
   return (
@@ -19,6 +20,12 @@ export default function Home({ exploreData, liveData }) {
       <main className='max-w-7xl mx-auto px-8 sm:px-16'>
         <ExploreCards exploreData={exploreData} />
         <LiveAnywhere liveData={liveData} />
+        <FooterCard
+          img='/footerImg.webp'
+          title='The Greatest Outdoors'
+          description='Wishlists currated by Airbnb.'
+          buttonText='Get Inspired!'
+        />
       </main>
     </div>
   );
