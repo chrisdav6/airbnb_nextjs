@@ -12,7 +12,7 @@ import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
-const Header = () => {
+const Header = ({ placeholder }) => {
   const [searchInput, setSearchInput] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -35,6 +35,18 @@ const Header = () => {
     setSearchInput('');
   };
 
+  const search = () => {
+    router.push({
+      pathname: '/search',
+      query: {
+        location: searchInput,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        numOfGuests: numOfGuests,
+      },
+    });
+  };
+
   return (
     <header className='sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md:px-10'>
       {/* Left - Logo */}
@@ -55,7 +67,7 @@ const Header = () => {
       <div className='flex items-center rounded-full py-2 md:border-2 md:shadow-sm'>
         <input
           type='text'
-          placeholder='Start your search!'
+          placeholder={placeholder || 'Start your search!'}
           className='pl-5 bg-transparent outline-none flex-grow text-sm text-gray-600 placeholder-gray-400'
           onChange={(e) => setSearchInput(e.target.value)}
           value={searchInput}
@@ -102,7 +114,9 @@ const Header = () => {
             <button className='flex-grow text-gray-500' onClick={resetInput}>
               Cancel
             </button>
-            <button className='flex-grow text-red-400'>Search</button>
+            <button onClick={search} className='flex-grow text-red-400'>
+              Search
+            </button>
           </div>
         </div>
       )}
